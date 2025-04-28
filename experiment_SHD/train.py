@@ -1,4 +1,4 @@
-from simulator import *
+from experiment_SHD.simulator import *
 import matplotlib.pyplot as plt
 import numpy as np
 import json

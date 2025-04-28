@@ -4,7 +4,7 @@ import os
 import tables
 import random
 
-cache_dir=os.path.expanduser("~/data")
+cache_dir=os.path.expanduser("data")
 cache_subdir="SHD"
 print("Using cache dir: %s"%cache_dir)
 num_input= 700
