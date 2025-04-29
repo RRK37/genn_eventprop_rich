@@ -8,7 +8,7 @@ from os.path import exists
 
 
 p["EVALUATION"] = "speaker"
-p["N_EPOCH"] = 200
+p["N_EPOCH"] = 2
 p["LOSS_TYPE"] = "sum_weigh_exp"
 p["MIN_EPOCH_ETA_FIXED"] = 100
 p["BALANCE_TRAIN_CLASSES"]= True
@@ -37,17 +37,21 @@ p["HIDDEN_HIDDEN_STD"] = 0.03
 
 p["BUILD"] = True
 
-p["OUT_DIR"] = "recording_neurons"
+p["OUT_DIR"] = "test_recording_2"
 
 
-p["REC_SPIKES"] = ["input"]#,"hidden","output"]
-p["REC_SPIKES_EPOCH_TRIAL"] = [99,7]
-p["REC_NEURONS"] = [("input","in_neuron")]#, "hidden", "output"]
-p["REC_NEURONS_EPOCH_TRIAL"] = [99,7]
-p["REC_SYNAPSES"] = [("in_to_hid","in_hi_synapse")]#, "hid_to_out"]
-p["REC_SYNAPSES_EPOCH_TRIAL"] = [99,7]
-p["W_OUTPUT_EPOCH_TRIAL"] = [99,7]
-p["TAU_OUTPUT_EPOCH_TRIAL"] = [99,7]
+p["DEBUG"]= True
+#p["REC_SPIKES"]= ["input","hidden"]
+
+#p["W_OUTPUT_EPOCH_TRIAL"]= [(0,25),(0,26),(0,27),(0,28),(0,29),(0,30),(0,31),
+#]
+
+p["REC_NEURONS"] = [("input","in_neuron"), ("hidden","hid_neuron"), ("output","out_neuron")]
+p["REC_NEURONS_EPOCH_TRIAL"] = [1,1]
+#p["REC_SYNAPSES"] = [("in_to_hid","in_hi_synapse")]#, "hid_to_out"]
+#p["REC_SYNAPSES_EPOCH_TRIAL"] = [1,7]
+#p["W_OUTPUT_EPOCH_TRIAL"] = [1,7]
+#p["TAU_OUTPUT_EPOCH_TRIAL"] = [1,7]
 
 jname= os.path.join(p["OUT_DIR"], p["NAME"]+".json")
 jfile= open(jname,'w')

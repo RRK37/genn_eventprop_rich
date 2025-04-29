@@ -9,3 +9,4 @@ test*.json
 __pycache__/
 data/
 test_MNIST_all/
+genn_env/*

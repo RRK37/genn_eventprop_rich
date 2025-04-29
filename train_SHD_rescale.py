@@ -84,8 +84,8 @@ p["EMA_ALPHA2"]= 0.05
 p["ETA_FAC"]= 0.5
 p["MIN_EPOCH_ETA_FIXED"]= 20
 
-#p["REC_SPIKES"]= ["input"]
-#p["REC_SPIKES_EPOCH_TRIAL"]= [[0,0]]
+p["REC_SPIKES"]= ["input"]
+p["REC_SPIKES_EPOCH_TRIAL"]= [[0,0]]
 p["TAUM_OUTPUT_EPOCH_TRIAL"]= [[2,0],[10,0],[20,0],[50,0],[100,0],[299,0]]
 
 found= False
