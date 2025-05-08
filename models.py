@@ -546,12 +546,12 @@ softmax_2_model = genn_model.create_custom_custom_update_class(
 # Third pass of softmax - calculate softmax value
 softmax_3_model = genn_model.create_custom_custom_update_class(
     "softmax_3_model",
-    var_refs= [("Val", "scalar", VarAccessMode_READ_ONLY),
+    var_refs= [("Val", "scalar", VarAccessMode_READ_ONLY), # Where is Val defined?
                ("MaxVal", "scalar", VarAccessMode_READ_ONLY),
                ("SumExpVal", "scalar", VarAccessMode_READ_ONLY),
                ("SoftmaxVal", "scalar")],
     update_code= """
-    $(SoftmaxVal) = exp($(Val) - $(MaxVal)) / $(SumExpVal);
+    $(SoftmaxVal) = exp($(Val) - $(MaxVal)) / $(SumExpVal);  
     """
     )
 
@@ -1577,30 +1577,45 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
                     ("trial","int"),("tau_m","scalar"),("tau_syn","scalar")],
     extra_global_params=[("label","int*")], 
     sim_code="""
+
+
     // backward pass
+
     const double local_t= ($(t)-$(rev_t))/$(trial_t);
+
     scalar alpha= exp(-DT/$(tau_m));
     scalar beta= exp(-DT/$(tau_syn));
+
     scalar gamma= $(tau_m)/($(tau_m)-$(tau_syn));
     scalar A= 0.0;
+
     if ($(trial) > 0) {
         if ($(id) == $(label)[($(trial)-1)*(int)$(N_batch)+$(batch)]) {
-            A= exp(-(1.0-local_t))*(1.0-$(SoftmaxVal))/$(tau_m)/$(trial_t)/$(N_batch);
+            A= exp( -(1.0-local_t) ) * ( 1.0-$(SoftmaxVal) )  /  $(tau_m) / $(trial_t) /$(N_batch); //////////////////////////////////////////////////////////
         }
         else {
-            A= -exp(-(1.0-local_t))*$(SoftmaxVal)/$(tau_m)/$(trial_t)/$(N_batch);
+            A= -exp( -(1.0-local_t) ) * $(SoftmaxVal) / $(tau_m)/$(trial_t)/$(N_batch);  ////////////////////////////////////////////////////////////////////
         }
     }
+
     if (abs($(tau_m)-$(tau_syn)) < 1e-9) {
-        $(lambda_I)= A + (DT/$(tau_syn)*($(lambda_V)-A)+($(lambda_I)-A))*beta;
+        $(lambda_I)= A + ( DT / $(tau_syn) * ( $(lambda_V) - A ) + ( $(lambda_I) - A) )*beta;
     }
+
     else {
-        $(lambda_I)= A + ($(lambda_I)-A)*beta+gamma*($(lambda_V)-A)*(alpha-beta);
+        $(lambda_I)= A + ( $(lambda_I) - A ) * beta + gamma * ( $(lambda_V) - A ) * (alpha-beta);
     }
+
+    
     $(lambda_V)= A + ($(lambda_V)-A)*alpha;
+
+
+
+
+
     // forward pass
     // update the summed voltage
-    $(sum_V)+= exp(-local_t)*$(V)/$(trial_t)*DT; // simple Euler
+    $(sum_V) += exp(-local_t) * $(V) / $(trial_t) * DT; // simple Euler ///////////////////////////////////////////////////////////////////////////////////////
     //$(V) += ($(Isyn)-$(V))/$(tau_m)*DT;   // simple Euler
     if (abs($(tau_m)-$(tau_syn)) < 1e-9) {
         $(V)= (DT/$(tau_m)*$(Isyn)+$(V))*exp(-DT/$(tau_m));
