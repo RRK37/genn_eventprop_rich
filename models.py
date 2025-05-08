@@ -1610,9 +1610,6 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
     $(lambda_V)= A + ($(lambda_V)-A)*alpha;
 
 
-
-
-
     // forward pass
     // update the summed voltage
     $(sum_V) += exp(-local_t) * $(V) / $(trial_t) * DT; // simple Euler ///////////////////////////////////////////////////////////////////////////////////////
