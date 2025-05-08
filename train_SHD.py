@@ -51,7 +51,7 @@ p["ALPHA"] = 5*10^(-5)
 
 p["BUILD"] = True
 
-p["OUT_DIR"] = "test_recording_2"
+p["OUT_DIR"] = "table_4_values"
 
 
 #p["DEBUG"]= True
