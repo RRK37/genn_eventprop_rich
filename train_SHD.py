@@ -28,7 +28,7 @@ p["INPUT_DELAY"] = 30
 
 p["TAU_MEM"] = 20
 p["TAU_SYN"] = 5
-p["GLB_UPPER"] = 10^(-9)
+# p["GLB_UPPER"] = 10^(-9)
 p["ETA"] = 0.001
 
 
