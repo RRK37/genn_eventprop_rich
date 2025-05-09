@@ -17,7 +17,7 @@ p["BALANCE_EVAL_CLASSES"]= True
 p["TRAIN_DATA_SEED"] = 123
 p["TEST_DATA_SEED"] = 321
 p["REG_TYPE"] = "simple"
-p["TRIAL_MS"] = 1400.0
+p["TRIAL_MS"] = 1000.0
 p["AUGMENTATION"]= {
     "NORMALISE_SPIKE_NUMBER": True,
     "random_shift": 40.0,
@@ -26,7 +26,7 @@ p["AUGMENTATION"]= {
 p["N_INPUT_DELAY"] = 10
 p["INPUT_DELAY"] = 30
 
-p["TAU_MEM"] = 40
+p["TAU_MEM"] = 20
 p["TAU_SYN"] = 5
 p["GLB_UPPER"] = 10^(-9)
 p["ETA"] = 0.001
