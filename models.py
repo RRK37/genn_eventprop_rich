@@ -1589,12 +1589,15 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
     scalar gamma= $(tau_m)/($(tau_m)-$(tau_syn));
     scalar A= 0.0;
 
+    float m = -1.9
+    float s = 1.6
+
     if ($(trial) > 0) {
         if ($(id) == $(label)[($(trial)-1)*(int)$(N_batch)+$(batch)]) {
-            A= exp( -((1.0-local_t - 0.3) * (1.0-local_t - 0.3)) / (0.18) ) * ( 1.0-$(SoftmaxVal) )  /  $(tau_m) / $(trial_t) /$(N_batch); //////////////////////////////////////////////////////////
+            A= 2 * exp( -( ( (1-local_t) - m) * ( (1-local_t) - m) ) / (2*s*s) ) * ( 1.0-$(SoftmaxVal) )  /  $(tau_m) / $(trial_t) /$(N_batch); //////////////////////////////////////////////////////////
         }
         else {
-            A= -exp( -((1.0-local_t - 0.3) * (1.0-local_t - 0.3)) / (0.18) ) * $(SoftmaxVal) / $(tau_m)/$(trial_t)/$(N_batch);  ////////////////////////////////////////////////////////////////////
+            A= -2 * exp( -( ( (1-local_t) - m) * ( (1-local_t) - m) ) / (2*s*s) ) * $(SoftmaxVal) / $(tau_m)/$(trial_t)/$(N_batch);  ////////////////////////////////////////////////////////////////////
         }
     }
 
@@ -1612,7 +1615,7 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
 
     // forward pass
     // update the summed voltage
-    $(sum_V) += exp( -( (local_t - 0.3) * (local_t - 0.3) ) / (0.18) ) * $(V) / $(trial_t) * DT; // simple Euler ///////////////////////////////////////////////////////////////////////////////////////
+    $(sum_V) += 2 * exp( -( (local_t - m) * (local_t - m) ) / (2*s*s) ) * $(V) / $(trial_t) * DT; // simple Euler ///////////////////////////////////////////////////////////////////////////////////////
     //$(V) += ($(Isyn)-$(V))/$(tau_m)*DT;   // simple Euler
     if (abs($(tau_m)-$(tau_syn)) < 1e-9) {
         $(V)= (DT/$(tau_m)*$(Isyn)+$(V))*exp(-DT/$(tau_m));
