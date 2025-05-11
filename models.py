@@ -1589,19 +1589,21 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
     scalar gamma= $(tau_m)/($(tau_m)-$(tau_syn));
     scalar A= 0.0;
 
-    float m = -1.9;
-    float s = 1.6;
+    float m = 0;
+    float s = 0.4;
     float d = 5;
-    float o = 0.3;
+    float o = 0.2;
 
     if ($(trial) > 0) {
         if ($(id) == $(label)[($(trial)-1)*(int)$(N_batch)+$(batch)]) {
-            A= 2 * ( o + d * (1-(local_t) - m) * exp( -( ( (1-local_t) - m) * ( (1-local_t) - m) ) / (2*s*s) ) ) * ( 1.0-$(SoftmaxVal) )  /  $(tau_m) / $(trial_t) /$(N_batch); //////////////////////////////////////////////////////////
+            A= 2 * ( o + d * ( (1-local_t) - m) * exp( -( (1-local_t) - m)*( (1-local_t) - m) / (2*s*s)  ) ) * ( 1.0-$(SoftmaxVal) )  /  $(tau_m) / $(trial_t) /$(N_batch); //////////////////////////////////////////////////////////
         }
         else {
-            A= -2 * ( o + d * (1-(local_t) - m) * exp( -( ( (1-local_t) - m) * ( (1-local_t) - m) ) / (2*s*s) ) ) * $(SoftmaxVal) / $(tau_m)/$(trial_t)/$(N_batch);  ////////////////////////////////////////////////////////////////////
+            A= -2 * ( o + d * ( (1-local_t) - m) * exp( -( (1-local_t) - m)*( (1-local_t) - m) / (2*s*s)  ) ) * $(SoftmaxVal) / $(tau_m)/$(trial_t)/$(N_batch);  ////////////////////////////////////////////////////////////////////
         }
     }
+
+    // ( o + d * ( (1-local_t) - m) * exp( -( (1-local_t) - m)*( (1-local_t) - m) / (2*s*s)  ) )
 
     if (abs($(tau_m)-$(tau_syn)) < 1e-9) {
         $(lambda_I)= A + ( DT / $(tau_syn) * ( $(lambda_V) - A ) + ( $(lambda_I) - A) )*beta;
@@ -1619,8 +1621,9 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
     // update the summed voltage
     
     
-    $(sum_V) += 2 * (  o + d * (local_t - m) * exp( -( (local_t - m) * (local_t - m) ) / (2*s*s) ) ) * $(V) / $(trial_t) * DT; // simple Euler ///////////////////////////////////////////////////////////////////////////////////////
+    $(sum_V) += 2 * ( o + d * (local_t - m) * exp( -(local_t - m)*(local_t - m) / (2*s*s)  ) ) * $(V) / $(trial_t) * DT; // simple Euler ///////////////////////////////////////////////////////////////////////////////////////
     
+    // ( o + d * (local_t - m) * exp( -(local_t - m)*(local_t - m) / (2*s*s)  ) )
     
     //$(V) += ($(Isyn)-$(V))/$(tau_m)*DT;   // simple Euler
     if (abs($(tau_m)-$(tau_syn)) < 1e-9) {
