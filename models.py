@@ -1596,10 +1596,10 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
 
     if ($(trial) > 0) {
         if ($(id) == $(label)[($(trial)-1)*(int)$(N_batch)+$(batch)]) {
-            A= 2 * ( o + d * (1-local_t) * exp( -( ( (1-local_t) - m) * ( (1-local_t) - m) ) / (2*s*s) ) ) * ( 1.0-$(SoftmaxVal) )  /  $(tau_m) / $(trial_t) /$(N_batch); //////////////////////////////////////////////////////////
+            A= 2 * ( o + d * (1-(local_t) - m) * exp( -( ( (1-local_t) - m) * ( (1-local_t) - m) ) / (2*s*s) ) ) * ( 1.0-$(SoftmaxVal) )  /  $(tau_m) / $(trial_t) /$(N_batch); //////////////////////////////////////////////////////////
         }
         else {
-            A= -2 * ( o + d * (1-local_t) * exp( -( ( (1-local_t) - m) * ( (1-local_t) - m) ) / (2*s*s) ) ) * $(SoftmaxVal) / $(tau_m)/$(trial_t)/$(N_batch);  ////////////////////////////////////////////////////////////////////
+            A= -2 * ( o + d * (1-(local_t) - m) * exp( -( ( (1-local_t) - m) * ( (1-local_t) - m) ) / (2*s*s) ) ) * $(SoftmaxVal) / $(tau_m)/$(trial_t)/$(N_batch);  ////////////////////////////////////////////////////////////////////
         }
     }
 
@@ -1617,7 +1617,11 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
 
     // forward pass
     // update the summed voltage
-    $(sum_V) += 2 * (  o + d * local_t * exp( -( (local_t - m) * (local_t - m) ) / (2*s*s) ) ) * $(V) / $(trial_t) * DT; // simple Euler ///////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    $(sum_V) += 2 * (  o + d * (local_t - m) * exp( -( (local_t - m) * (local_t - m) ) / (2*s*s) ) ) * $(V) / $(trial_t) * DT; // simple Euler ///////////////////////////////////////////////////////////////////////////////////////
+    
+    
     //$(V) += ($(Isyn)-$(V))/$(tau_m)*DT;   // simple Euler
     if (abs($(tau_m)-$(tau_syn)) < 1e-9) {
         $(V)= (DT/$(tau_m)*$(Isyn)+$(V))*exp(-DT/$(tau_m));
