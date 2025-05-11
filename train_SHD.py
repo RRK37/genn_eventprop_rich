@@ -51,7 +51,7 @@ p["ALPHA"] = 5*10^(-5)
 
 p["BUILD"] = True
 
-p["OUT_DIR"] = "table_5_values_new_loss_bell_0_-04_5_02"
+p["OUT_DIR"] = "table_5_values_new_loss_bell_0_-04_3_02"
 
 
 #p["DEBUG"]= True
