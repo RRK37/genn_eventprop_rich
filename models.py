@@ -1589,10 +1589,10 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
     scalar gamma= $(tau_m)/($(tau_m)-$(tau_syn));
     scalar A= 0.0;
 
-    float m = -1.4;
-    float s = -0.8;
-    float d = 3;
-    float o = 0.2;
+    float m = 0;
+    float s = -0.2;
+    float d = 4.4;
+    float o = 0.4;
 
     if ($(trial) > 0) {
         if ($(id) == $(label)[($(trial)-1)*(int)$(N_batch)+$(batch)]) {
