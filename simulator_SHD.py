@@ -2262,13 +2262,16 @@ class SHD_model:
                 label_rich = "epoch_"+"00"+str(epoch)
             elif epoch < 100:
                 label_rich = "epoch_"+"0"+str(epoch)
-                
+
             self.write_checkpoint(label_rich, p)
 
-                
+        
+
             
 
         for pop in p["REC_SPIKES"]:
+            print(pop)
+            print(spike_t[pop])
             spike_t[pop]= np.hstack(spike_t[pop])
             spike_ID[pop]= np.hstack(spike_ID[pop])
 
