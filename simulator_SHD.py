@@ -2075,9 +2075,6 @@ class SHD_model:
                     rec_spk_lbl.append(lbl.copy())
                     rec_spk_pred.append(pred.copy())
 
-
-                print("")
-
                 if ([epoch, trial] in p["REC_NEURONS_EPOCH_TRIAL"]):
                     rec_n_lbl.append(lbl.copy())
                     rec_n_pred.append(pred.copy())
