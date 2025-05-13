@@ -16,6 +16,7 @@ p["BALANCE_EVAL_CLASSES"]= True
 p["TRAIN_DATA_SEED"] = 123
 p["TEST_DATA_SEED"] = 321
 p["TRIAL_MS"] = 1000.0
+p["DT_MS"] = 0.1
 p["AUGMENTATION"]= {
     "NORMALISE_SPIKE_NUMBER": True,
     "random_shift": 40.0,
@@ -56,6 +57,7 @@ p["DEBUG"]= True
 
 p["REC_SPIKES"]= ["input","output"]
 p["REC_SPIKES_EPOCH_TRIAL"]= [[1,1],[2,1],[3,1],[5,1]]
+p["SPK_REC_STEPS"]= int(p["TRIAL_MS"]/p["DT_MS"])
 
 # p["W_OUTPUT_EPOCH_TRIAL"] = [[0,25],[0,26],[0,27],[0,28],[0,29],[0,30],[0,31],[1,25],[1,26],[1,27],[1,28],[1,29],[1,30],[1,31]]
 
