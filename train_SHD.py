@@ -54,7 +54,7 @@ p["OUT_DIR"] = "experimental_recording_2"
 
 p["DEBUG"]= True
 
-p["REC_SPIKES"]= ["input"]
+p["REC_SPIKES"]= ["input","output"]
 p["REC_SPIKES_EPOCH_TRIAL"]= [[1,1],[2,1],[3,1],[5,1]]
 
 # p["W_OUTPUT_EPOCH_TRIAL"] = [[0,25],[0,26],[0,27],[0,28],[0,29],[0,30],[0,31],[1,25],[1,26],[1,27],[1,28],[1,29],[1,30],[1,31]]
