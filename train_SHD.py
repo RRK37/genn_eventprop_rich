@@ -51,7 +51,8 @@ p["ALPHA"] = 5*10^(-5)
 
 p["BUILD"] = True
 
-p["OUT_DIR"] = "table_5_values_new_loss_bell_0_-02_44_04"
+p["OUT_DIR"] = "experimental_recording"
+# p["OUT_DIR"] = "table_5_values_new_loss_bell_0_-02_44_04"
 
 
 #p["DEBUG"]= True
@@ -74,7 +75,7 @@ print(p)
 
 mn= SHD_model(p)
 spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train(p)
-
+print(spike_t)
 rname= os.path.join(p["OUT_DIR"], p["NAME"]+'.summary.txt')
 sumfile= open(rname,'w')
 sumfile.write("Training correct: {}, Valuation correct: {}".format(correct,correct_eval))
