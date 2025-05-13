@@ -1960,13 +1960,16 @@ class SHD_model:
 
                     if len(p["REC_SPIKES"]) > 0:
                         if int_t%p["SPK_REC_STEPS"] == 0:
+                            print("yes")
                             if [epoch,trial] in p["REC_SPIKES_EPOCH_TRIAL"]:
                                 self.model.pull_recording_buffers_from_device()
                                 for pop in p["REC_SPIKES"]:
+                                    print("yes2")
                                     the_pop= self.model.neuron_populations[pop]
                                     x= the_pop.spike_recording_data
                                     if p["N_BATCH"] > 1:
                                         for i in range(N_batch):
+                                            print("yes3")
                                             spike_t[pop].append(x[i][0]+(spk_rec_offset+i)*p["TRIAL_MS"]) 
                                             spike_ID[pop].append(x[i][1])
                                     else:
