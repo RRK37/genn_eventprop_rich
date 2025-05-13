@@ -2258,7 +2258,7 @@ class SHD_model:
                 self.write_checkpoint("best",p)    
 
             # if (p["CHECKPOINT"]):
-            label_rich = "epoch_"+epoch
+            label_rich = "epoch_"+str(epoch)
             self.write_checkpoint(label_rich, p)
 
                 
