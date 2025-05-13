@@ -49,7 +49,7 @@ p["TAU_1"] = 100
 p["ALPHA"] = 5*10^(-5)
 
 # Recording parameters
-p["OUT_DIR"] = "experimental_recording"
+p["OUT_DIR"] = "experimental_recording_2"
 # p["OUT_DIR"] = "table_5_values_new_loss_bell_0_-02_44_04"
 
 p["DEBUG"]= True
