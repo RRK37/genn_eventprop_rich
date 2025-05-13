@@ -2072,8 +2072,8 @@ class SHD_model:
                 if ([epoch, trial] in p["REC_SPIKES_EPOCH_TRIAL"]):
                     rec_spk_lbl.append(lbl.copy())
                     rec_spk_pred.append(pred.copy())
-                print("Epoch trial 1:" epoch trial)
-                print("Epoch trial 2:",p["REC_SPIKES_EPOCH_TRIAL"])
+                print("Epoch trial 1:", epoch trial)
+                print("Epoch trial 2:", p["REC_SPIKES_EPOCH_TRIAL"])
 
                 print("")
 
