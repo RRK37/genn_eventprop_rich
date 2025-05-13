@@ -7,16 +7,14 @@ import json
 from os.path import exists
 
 
+# Training parameters 
 p["EVALUATION"] = "speaker"
 p["N_EPOCH"] = 300
-p["LOSS_TYPE"] = "sum_weigh_exp"
 p["MIN_EPOCH_ETA_FIXED"] = 300
 p["BALANCE_TRAIN_CLASSES"]= True
 p["BALANCE_EVAL_CLASSES"]= True
-
 p["TRAIN_DATA_SEED"] = 123
 p["TEST_DATA_SEED"] = 321
-p["REG_TYPE"] = "simple"
 p["TRIAL_MS"] = 1000.0
 p["AUGMENTATION"]= {
     "NORMALISE_SPIKE_NUMBER": True,
@@ -26,15 +24,13 @@ p["AUGMENTATION"]= {
 p["N_INPUT_DELAY"] = 10
 p["INPUT_DELAY"] = 30
 
-p["TAU_MEM"] = 20
-p["TAU_SYN"] = 5
-# p["GLB_UPPER"] = 10^(-9)
+# Network parameters
 p["ETA"] = 0.001
-
-
 p["N_HID_LAYER"] = 1
 p["NUM_HIDDEN"] = 1024
 p["RECURRENT"] = True
+p["TAU_MEM"] = 20
+p["TAU_SYN"] = 5
 p["INPUT_HIDDEN_MEAN"] = 0.03
 p["INPUT_HIDDEN_STD"] = 0.01
 p["HIDDEN_HIDDEN_MEAN"] = 0
@@ -43,17 +39,18 @@ p["HIDDEN_OUTPUT_MEAN"] = 0
 p["HIDDEN_OUTPUT_STD"] = 0.03
 p["PDROP_INPUT"] = 0
 p["NU_UPPER"] = 14
+p["REG_TYPE"] = "simple"
+# p["GLB_UPPER"] = 10^(-9)
 
+# Training parameters
+p["LOSS_TYPE"] = "sum_weigh_exp"
 p["TAU_0"] = 1
 p["TAU_1"] = 100
 p["ALPHA"] = 5*10^(-5)
 
-
-p["BUILD"] = True
-
+# Recording parameters
 p["OUT_DIR"] = "experimental_recording"
 # p["OUT_DIR"] = "table_5_values_new_loss_bell_0_-02_44_04"
-
 
 #p["DEBUG"]= True
 #p["REC_SPIKES"]= ["input","hidden"]
@@ -67,6 +64,8 @@ p["OUT_DIR"] = "experimental_recording"
 #p["REC_SYNAPSES_EPOCH_TRIAL"] = [1,7]
 #p["W_OUTPUT_EPOCH_TRIAL"] = [1,7]
 #p["TAU_OUTPUT_EPOCH_TRIAL"] = [1,7]
+
+p["BUILD"] = True
 
 jname= os.path.join(p["OUT_DIR"], p["NAME"]+".json")
 jfile= open(jname,'w')
