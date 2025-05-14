@@ -41,6 +41,7 @@ p["HIDDEN_OUTPUT_STD"] = 0.03
 p["PDROP_INPUT"] = 0
 p["NU_UPPER"] = 14
 p["REG_TYPE"] = "simple"
+
 # p["GLB_UPPER"] = 10^(-9)
 
 # Training parameters
@@ -48,6 +49,7 @@ p["LOSS_TYPE"] = "sum_weigh_exp"
 p["TAU_0"] = 1
 p["TAU_1"] = 100
 p["ALPHA"] = 5*10^(-5)
+p["N_BATCH"]= 64
 
 # Recording parameters
 # p["OUT_DIR"] = "experimental_recording_4"
