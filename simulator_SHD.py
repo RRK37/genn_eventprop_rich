@@ -1786,8 +1786,8 @@ class SHD_model:
         correct_best = 0.0
         start_time= time()
         for epoch in range(number_epochs):
-            #print(f"start epoch ... {time()-the_time} s for last epoch mainloop")
-            #the_time= time()
+            print(f"start epoch ... {time()-the_time} s for last epoch mainloop")
+            the_time= time()
             # if we are doing augmentation, the entire spike time array needs to be set up anew.
             lX= copy.deepcopy(X_train)
             lY= copy.deepcopy(Y_train)
