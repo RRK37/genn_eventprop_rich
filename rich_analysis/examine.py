@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 print("Hello")
 
-data = np.load("experimental_recording_4/test_input_spike_ID.npy")
+data = np.load("experimental_recording_4/test_spk_pred.npy")
 
 print(data)
 print(len(data))
