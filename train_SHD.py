@@ -51,9 +51,9 @@ p["NU_UPPER"] = 14
 
 
 # Recording parameters
-# p["OUT_DIR"] = "z_bell_loss_0_-02_44_04"
-# p["REC_SPIKES"]= ["input","hidden0","output"]
-# p["REC_SPIKES_EPOCH_TRIAL"]= [[1,1],[50,1],[100,1],[200,1],[299,1]]
+p["OUT_DIR"] = "z_bell_loss_0_-02_44_04"
+p["REC_SPIKES"]= ["input","hidden0","output"]
+p["REC_SPIKES_EPOCH_TRIAL"]= [[1,1],[50,1],[100,1],[200,1],[299,1]]
 p["SPK_REC_STEPS"]= int(p["TRIAL_MS"]/p["DT_MS"])
 
 #p["DEBUG"]= True
