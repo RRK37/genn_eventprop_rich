@@ -171,6 +171,7 @@ def rescale(x, t, p):
     new_t= np.floor(new_t/p["DT_MS"]).astype(int)
     fmatrix= np.zeros((int(700*p["RESCALE_X"]),int(p["TRIAL_MS"]/p["DT_MS"])))
     fmatrix[new_x, new_t]= 1
+    print("Before where")
     idx= np.where(fmatrix == 1)
     sample= {"x": idx[0], "t": idx[1]*p["DT_MS"]}
     return sample
@@ -394,7 +395,10 @@ class SHD_model:
         self.num_output= self.N_class
         self.Y_train_orig= np.empty(len(dataset), dtype= int)
         self.X_train_orig= []
+        print("Before for loop")
+        print(len(dataset))
         for i in range(len(dataset)):
+            print(i)
             events, label = dataset[i]
             self.Y_train_orig[i]= label
             sample= rescale(events["x"], events["t"]/1000.0, p) # always apply rescale to have at most one spike per timestep
