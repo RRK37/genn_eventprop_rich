@@ -2257,13 +2257,13 @@ class SHD_model:
                 self.write_checkpoint("best",p)    
 
             # if (p["CHECKPOINT"]):
-        if epoch%2 == 1:
-            if epoch < 10:
-                label_rich = "epoch_"+"00"+str(epoch)
-            elif epoch < 100:
-                label_rich = "epoch_"+"0"+str(epoch)
+            if epoch%2 == 1:
+                if epoch < 10:
+                    label_rich = "epoch_"+"00"+str(epoch)
+                elif epoch < 100:
+                    label_rich = "epoch_"+"0"+str(epoch)
 
-            self.write_checkpoint(label_rich, p)
+                self.write_checkpoint(label_rich, p)
 
         
 
