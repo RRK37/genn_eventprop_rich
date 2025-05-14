@@ -9,7 +9,7 @@ from os.path import exists
 
 # Training parameters 
 p["EVALUATION"] = "speaker"
-p["N_EPOCH"] = 2
+p["N_EPOCH"] = 300
 p["MIN_EPOCH_ETA_FIXED"] = 300
 p["BALANCE_TRAIN_CLASSES"]= True
 p["BALANCE_EVAL_CLASSES"]= True
@@ -50,13 +50,13 @@ p["TAU_1"] = 100
 p["ALPHA"] = 5*10^(-5)
 
 # Recording parameters
-p["OUT_DIR"] = "experimental_recording_4"
-# p["OUT_DIR"] = "table_5_values_new_loss_bell_0_-02_44_04"
+# p["OUT_DIR"] = "experimental_recording_4"
+p["OUT_DIR"] = "table_5_values_new_loss_bell_01_-03_3_03"
 
 p["DEBUG"]= True
 
-p["REC_SPIKES"]= ["input","output"]
-p["REC_SPIKES_EPOCH_TRIAL"]= [[1,1],[2,1],[3,1],[5,1]]
+p["REC_SPIKES"]= ["input","hidden","output"]
+p["REC_SPIKES_EPOCH_TRIAL"]= [[1,1],[50,1],[100,1],[200,1],[299,1]]
 p["SPK_REC_STEPS"]= int(p["TRIAL_MS"]/p["DT_MS"])
 
 # p["W_OUTPUT_EPOCH_TRIAL"] = [[0,25],[0,26],[0,27],[0,28],[0,29],[0,30],[0,31],[1,25],[1,26],[1,27],[1,28],[1,29],[1,30],[1,31]]
