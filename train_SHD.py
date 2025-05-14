@@ -7,54 +7,55 @@ import json
 from os.path import exists
 
 # Training Setup
-p["EVALUATION"] = "speaker"
-p["N_EPOCH"] = 300
-p["BALANCE_TRAIN_CLASSES"]= True
-p["BALANCE_EVAL_CLASSES"]= True
-p["TRAIN_DATA_SEED"] = 123
-p["TEST_DATA_SEED"] = 321
-p["TRIAL_MS"] = 1000.0
+p["EVALUATION"]             = "speaker"
+p["N_EPOCH"]                = 300
+p["BALANCE_TRAIN_CLASSES"]  = True
+p["BALANCE_EVAL_CLASSES"]   = True
+p["TRAIN_DATA_SEED"]        = 123
+p["TEST_DATA_SEED"]         = 321
+p["TRIAL_MS"]               = 1000.0
 p["AUGMENTATION"]= {
     "NORMALISE_SPIKE_NUMBER": True,
     "random_shift": 40.0,
     "blend": [0.5,0.5]
 }
-p["N_INPUT_DELAY"] = 10
-p["INPUT_DELAY"] = 30
+p["N_INPUT_DELAY"]          = 10
+p["INPUT_DELAY"]            = 30
 
 
 # Learning parameters
-p["ETA"] = 0.001
-p["MIN_EPOCH_ETA_FIXED"] = 300
-p["LOSS_TYPE"] = "sum_weigh_exp"
-p["TAU_0"] = 1
-p["TAU_1"] = 100
-p["ALPHA"] = 5*10^(-5)
+p["ETA"]                    = 0.001
+p["MIN_EPOCH_ETA_FIXED"]    = 300
+p["LOSS_TYPE"]              = "sum_weigh_exp"
+p["TAU_0"]                  = 1
+p["TAU_1"]                  = 100
+p["ALPHA"]                  = 5*10^(-5)
 # p["GLB_UPPER"] = 10^(-9)
 
 
 # Network parameters
-p["REG_TYPE"] = "simple"
-p["TAU_MEM"] = 20
-p["TAU_SYN"] = 5
-p["N_HID_LAYER"] = 1
-p["NUM_HIDDEN"] = 1024
-p["RECURRENT"] = True
-p["INPUT_HIDDEN_MEAN"] = 0.03
-p["INPUT_HIDDEN_STD"] = 0.01
-p["HIDDEN_HIDDEN_MEAN"] = 0
-p["HIDDEN_HIDDEN_STD"] = 0.02 
-p["HIDDEN_OUTPUT_MEAN"] = 0 
-p["HIDDEN_OUTPUT_STD"] = 0.03
-p["PDROP_INPUT"] = 0
-p["NU_UPPER"] = 14
+p["REG_TYPE"]               = "simple"
+p["TAU_MEM"]                = 20
+p["TAU_SYN"]                = 5
+p["N_HID_LAYER"]            = 1
+p["NUM_HIDDEN"]             = 1024
+p["RECURRENT"]              = True
+p["INPUT_HIDDEN_MEAN"]      = 0.03
+p["INPUT_HIDDEN_STD"]       = 0.01
+p["HIDDEN_HIDDEN_MEAN"]     = 0
+p["HIDDEN_HIDDEN_STD"]      = 0.02 
+p["HIDDEN_OUTPUT_MEAN"]     = 0 
+p["HIDDEN_OUTPUT_STD"]      = 0.03
+p["PDROP_INPUT"]            = 0
+p["NU_UPPER"]               = 14
 
 
 # Recording parameters
-p["OUT_DIR"] = "z_bell_loss_0_-02_44_04"
-p["REC_SPIKES"]= ["input","hidden0","output"]
-p["REC_SPIKES_EPOCH_TRIAL"]= [[1,1],[50,1],[100,1],[200,1],[299,1]]
-p["SPK_REC_STEPS"]= int(p["TRIAL_MS"]/p["DT_MS"])
+# p["OUT_DIR"]                = "z_bell_loss_0_-02_44_04"
+p["OUT_DIR"]                = "simple_euler"
+# p["REC_SPIKES"]             = ["input","hidden0","output"]
+# p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1],[50,1],[100,1],[200,1],[299,1]]
+# p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
 
 #p["DEBUG"]= True
 
