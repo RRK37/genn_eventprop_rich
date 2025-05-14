@@ -2255,10 +2255,13 @@ class SHD_model:
                 self.write_checkpoint("best",p)    
 
             # if (p["CHECKPOINT"]):
-            # if epoch%2 == 1:
-            #     if epoch < 10:
-            #         rich label = ""
-            #     self.write_checkpoint("last",p)
+            if epoch%2 == 1:
+                if epoch < 10:
+                    rich_label = "00"+str(epoch)
+                elif epoch < 100:
+                    rich_label = "0"+str(epoch)
+                
+                self.write_checkpoint(rich_label, p)
                 
         for pop in p["REC_SPIKES"]:
             spike_t[pop]= np.hstack(spike_t[pop])
