@@ -55,7 +55,7 @@ p["OUT_DIR"] = "table_5_values_new_loss_bell_0_-02_44_04"
 
 p["DEBUG"]= True
 
-p["REC_SPIKES"]= ["input","hidden1","output"]
+p["REC_SPIKES"]= ["input","hidden0","output"]
 p["REC_SPIKES_EPOCH_TRIAL"]= [[1,1],[50,1],[100,1],[200,1],[299,1]]
 p["SPK_REC_STEPS"]= int(p["TRIAL_MS"]/p["DT_MS"])
 
