@@ -1960,8 +1960,6 @@ class SHD_model:
                                         spike_N_hidden[l][btch]+= len(x[btch][0])
 
                     if len(p["REC_SPIKES"]) > 0:
-                        print(int_t)
-                        print(p["SPK_REC_STEPS"])
                         if int_t%p["SPK_REC_STEPS"] == 0:
                             if [epoch,trial] in p["REC_SPIKES_EPOCH_TRIAL"]:
                                 self.model.pull_recording_buffers_from_device()
@@ -2272,8 +2270,6 @@ class SHD_model:
             
 
         for pop in p["REC_SPIKES"]:
-            print(pop)
-            print(spike_t[pop])
             spike_t[pop]= np.hstack(spike_t[pop])
             spike_ID[pop]= np.hstack(spike_ID[pop])
 
