@@ -2261,7 +2261,9 @@ class SHD_model:
                     rich_label = "00"+str(epoch)
                 elif epoch < 100:
                     rich_label = "0"+str(epoch)
-                
+                else:
+                    rich_label = str(epoch)
+
                 self.write_checkpoint(rich_label, p)
                 
         for pop in p["REC_SPIKES"]:
