@@ -1785,6 +1785,7 @@ class SHD_model:
         correct_eval_best = 0.0
         correct_best = 0.0
         the_time = time()
+        start_time = time()
         for epoch in range(number_epochs):
             print(f"start epoch ... {time()-the_time} s for last epoch mainloop")
             the_time= time()
@@ -2255,11 +2256,11 @@ class SHD_model:
                 self.write_checkpoint("best",p)    
 
             # if (p["CHECKPOINT"]):
-            if epoch%2 == 1:
-                if epoch < 10:
-                    rich_label = "00"+str(epoch)
-                elif epoch < 100:
-                    rich_label = "0"+str(epoch)
+            # if epoch%2 == 1:
+            #     if epoch < 10:
+            #         rich_label = "00"+str(epoch)
+            #     elif epoch < 100:
+            #         rich_label = "0"+str(epoch)
                 
                 self.write_checkpoint(rich_label, p)
                 
