@@ -203,6 +203,8 @@ class SHD_model:
         #self.load_data_SHD_Zenke(p)
         if p["DATA_SET"] == "SHD":
             self.load_data_SHD(p)
+        print("Done loading SHD")
+        
         if p["DATA_SET"] == "SSC":
             self.load_data_SSC(p)
         print("loading data complete ...")
