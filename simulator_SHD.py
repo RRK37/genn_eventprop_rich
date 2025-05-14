@@ -1784,7 +1784,7 @@ class SHD_model:
         red_lr_last= 0      # epoch when LR was last reduced
         correct_eval_best = 0.0
         correct_best = 0.0
-        start_time= time()
+        the_time = time()
         for epoch in range(number_epochs):
             print(f"start epoch ... {time()-the_time} s for last epoch mainloop")
             the_time= time()
@@ -2254,8 +2254,11 @@ class SHD_model:
                     f.close()
                 self.write_checkpoint("best",p)    
 
-            if (p["CHECKPOINT"]):
-                self.write_checkpoint("last",p)
+            # if (p["CHECKPOINT"]):
+            # if epoch%2 == 1:
+            #     if epoch < 10:
+            #         rich label = ""
+            #     self.write_checkpoint("last",p)
                 
         for pop in p["REC_SPIKES"]:
             spike_t[pop]= np.hstack(spike_t[pop])
