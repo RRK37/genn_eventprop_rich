@@ -1969,7 +1969,6 @@ class SHD_model:
                                     x= the_pop.spike_recording_data
                                     if p["N_BATCH"] > 1:
                                         for i in range(N_batch):
-                                            print("yes3")
                                             spike_t[pop].append(x[i][0]+(spk_rec_offset+i)*p["TRIAL_MS"]) 
                                             spike_ID[pop].append(x[i][1])
                                     else:
@@ -2073,8 +2072,6 @@ class SHD_model:
 
                 lbl= the_Y[(trial*p["N_BATCH"]):(trial*p["N_BATCH"]+N_batch)]
                 if ([epoch, trial] in p["REC_SPIKES_EPOCH_TRIAL"]):
-                    print("Epoch trial 1:", epoch, trial)
-                    print("Epoch trial 2:", p["REC_SPIKES_EPOCH_TRIAL"])
                     rec_spk_lbl.append(lbl.copy())
                     rec_spk_pred.append(pred.copy())
 
