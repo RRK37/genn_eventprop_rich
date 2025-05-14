@@ -393,10 +393,7 @@ class SHD_model:
         self.num_output= self.N_class
         self.Y_train_orig= np.empty(len(dataset), dtype= int)
         self.X_train_orig= []
-        print(len(dataset))
         for i in range(len(dataset)):
-            if i%10 == 1:
-                print(i)
             events, label = dataset[i]
             self.Y_train_orig[i]= label
             sample= rescale(events["x"], events["t"]/1000.0, p) # always apply rescale to have at most one spike per timestep
@@ -407,10 +404,7 @@ class SHD_model:
         self.data_max_length+= len(dataset)
         self.Y_test_orig= np.empty(len(dataset), dtype= int)
         self.X_test_orig= []
-        print(len(dataset))
         for i in range(len(dataset)):
-            if i%10 == 1:
-                print(i)
             events, label = dataset[i]
             self.Y_test_orig[i]= label
             sample= rescale(events["x"], events["t"]/1000.0, p) # always apply rescale to have at most one spike per timestep
