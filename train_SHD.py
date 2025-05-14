@@ -11,8 +11,8 @@ p["EVALUATION"]             = "speaker"
 p["N_EPOCH"]                = 300
 p["BALANCE_TRAIN_CLASSES"]  = True
 p["BALANCE_EVAL_CLASSES"]   = True
-p["TRAIN_DATA_SEED"]        = 123
-p["TEST_DATA_SEED"]         = 321
+p["TRAIN_DATA_SEED"]        = 321
+p["TEST_DATA_SEED"]         = 123
 p["TRIAL_MS"]               = 1000.0
 p["AUGMENTATION"]= {
     "NORMALISE_SPIKE_NUMBER": True,
