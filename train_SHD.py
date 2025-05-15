@@ -30,7 +30,6 @@ p["LOSS_TYPE"]              = "sum_weigh_exp"
 p["TAU_0"]                  = 1
 p["TAU_1"]                  = 100
 p["ALPHA"]                  = 5*10^(-5)
-# p["GLB_UPPER"] = 10^(-9)
 
 
 # Network parameters
@@ -48,6 +47,9 @@ p["HIDDEN_OUTPUT_MEAN"]     = 0
 p["HIDDEN_OUTPUT_STD"]      = 0.03
 p["PDROP_INPUT"]            = 0
 p["NU_UPPER"]               = 14
+p["GLB_UPPER"] = 1e-9
+p["LBD_UPPER"]= 2e-9
+p["LBD_LOWER"]= 2e-9
 
 
 # Recording parameters
