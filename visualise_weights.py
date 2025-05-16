@@ -8,7 +8,7 @@ import os
 DATA_DIRECTORY = "."
 
 # File naming pattern. {} will be replaced by the epoch number.
-FILE_PATTERN = "test_w_hidden_output_{}.npy"
+FILE_PATTERN = "z_bell_loss_0_-02_44_04/test_w_hidden_output_{}.npy"
 
 EPOCH_START = 0
 EPOCH_END = 298  # Inclusive
