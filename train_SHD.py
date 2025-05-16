@@ -8,7 +8,7 @@ from os.path import exists
 
 # Training Setup
 p["EVALUATION"]             = "speaker"
-p["N_EPOCH"]                = 300
+p["N_EPOCH"]                = 1
 p["BALANCE_TRAIN_CLASSES"]  = True
 p["BALANCE_EVAL_CLASSES"]   = True
 p["TRAIN_DATA_SEED"]        = 321
@@ -53,8 +53,8 @@ p["LBD_LOWER"]= 2e-9
 
 
 # Recording parameters
-p["OUT_DIR"]                = "z_bell_loss_0_-02_44_04"
-# p["OUT_DIR"]                = "simple_euler"
+# p["OUT_DIR"]                = "z_bell_loss_0_-02_44_04"
+p["OUT_DIR"]                = "z_experimental_rec"
 p["REC_SPIKES"]             = ["input","hidden0","output"]
 p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
 p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
