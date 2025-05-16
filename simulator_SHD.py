@@ -1962,10 +1962,6 @@ class SHD_model:
                     if len(p["REC_SPIKES"]) > 0:
                         if int_t%p["SPK_REC_STEPS"] == 0:
                             if [epoch,trial] in p["REC_SPIKES_EPOCH_TRIAL"]:
-                                PRINT("YES")
-                                PRINT("YES")
-                                PRINT("YES")
-                                PRINT("YES")
                                 self.model.pull_recording_buffers_from_device()
                                 for pop in p["REC_SPIKES"]:
                                     the_pop= self.model.neuron_populations[pop]
