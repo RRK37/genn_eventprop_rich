@@ -54,8 +54,8 @@ p["LBD_LOWER"]= 2e-9
 
 # Recording parameters
 # p["OUT_DIR"]                = "z_bell_loss_0_-02_44_04"
-p["OUT_DIR"]                = "z_experimental_rec"
-p["REC_SPIKES"]             = ["input","output"]
+p["OUT_DIR"]                = "z_experimental_rec_2"
+p["REC_SPIKES"]             = ["output"]
 p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
 p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
 
