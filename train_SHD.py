@@ -55,7 +55,7 @@ p["LBD_LOWER"]= 2e-9
 # Recording parameters
 # p["OUT_DIR"]                = "z_bell_loss_0_-02_44_04"
 p["OUT_DIR"]                = "z_experimental_rec_2"
-p["REC_SPIKES"]             = ["output"]
+p["REC_SPIKES"]             = ["hidden0"]
 p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
 p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
 
@@ -64,8 +64,8 @@ p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
 #p["W_OUTPUT_EPOCH_TRIAL"]= [(0,25),(0,26),(0,27),(0,28),(0,29),(0,30),(0,31),
 #]
 
-p["REC_NEURONS"] = [("input","in_neuron"), ("hidden0","hid_neuron"), ("output","out_neuron")]
-p["REC_NEURONS_EPOCH_TRIAL"] = [1,1]
+# p["REC_NEURONS"] = [("input","in_neuron"), ("hidden0","hid_neuron"), ("output","out_neuron")]
+# p["REC_NEURONS_EPOCH_TRIAL"] = [1,1]
 #p["REC_SYNAPSES"] = [("in_to_hid","in_hi_synapse")]#, "hid_to_out"]
 #p["REC_SYNAPSES_EPOCH_TRIAL"] = [1,7]
 #p["W_OUTPUT_EPOCH_TRIAL"] = [1,7]
