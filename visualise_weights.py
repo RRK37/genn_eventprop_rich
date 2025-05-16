@@ -34,7 +34,7 @@ def plot_weight_evolution():
     for epoch in epochs_to_try:
         filename = FILE_PATTERN.format(epoch)
         filepath = os.path.join(DATA_DIRECTORY, filename)
-
+        print(filepath)
         if not os.path.exists(filepath):
             # print(f"Info: File not found {filepath}. Skipping this epoch.")
             continue
