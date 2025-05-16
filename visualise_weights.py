@@ -10,7 +10,7 @@ DATA_DIRECTORY = "."
 # File naming pattern. {} will be replaced by the epoch number.
 FILE_PATTERN = "z_bell_loss_0_-02_44_04/test_w_hidden_output_{}.npy"
 
-EPOCH_START = 0
+EPOCH_START = 1
 EPOCH_END = 298  # Inclusive
 EPOCH_STEP = 2
 
@@ -34,7 +34,7 @@ def plot_weight_evolution():
     for epoch in epochs_to_try:
         filename = FILE_PATTERN.format(epoch)
         filepath = os.path.join(DATA_DIRECTORY, filename)
-        print(filepath)
+        # print(filepath)
         if not os.path.exists(filepath):
             # print(f"Info: File not found {filepath}. Skipping this epoch.")
             continue
