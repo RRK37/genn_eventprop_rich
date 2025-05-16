@@ -25,7 +25,7 @@ p["INPUT_DELAY"]            = 30
 
 # Learning parameters
 p["ETA"]                    = 0.001
-p["MIN_EPOCH_ETA_FIXED"]    = 300
+p["MIN_EPOCH_ETA_FIXED"]    = 1
 p["LOSS_TYPE"]              = "sum_weigh_exp"
 p["TAU_0"]                  = 1
 p["TAU_1"]                  = 100
@@ -53,11 +53,11 @@ p["LBD_LOWER"]= 2e-9
 
 
 # Recording parameters
-# p["OUT_DIR"]                = "z_bell_loss_0_-02_44_04"
-p["OUT_DIR"]                = "simple_euler"
-# p["REC_SPIKES"]             = ["input","hidden0","output"]
-# p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1],[50,1],[100,1],[200,1],[299,1]]
-# p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
+p["OUT_DIR"]                = "z_bell_loss_0_-02_44_04"
+# p["OUT_DIR"]                = "simple_euler"
+p["REC_SPIKES"]             = ["input","hidden0","output"]
+p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
+p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
 
 #p["DEBUG"]= True
 
