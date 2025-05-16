@@ -1,0 +1,1 @@
+Training correct: 0.06174777603349032, Valuation correct: 0.05
