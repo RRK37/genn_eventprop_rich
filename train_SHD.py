@@ -8,7 +8,7 @@ from os.path import exists
 
 # Training Setup
 p["EVALUATION"]             = "speaker"
-p["N_EPOCH"]                = 1
+p["N_EPOCH"]                = 2
 p["BALANCE_TRAIN_CLASSES"]  = True
 p["BALANCE_EVAL_CLASSES"]   = True
 p["TRAIN_DATA_SEED"]        = 321
