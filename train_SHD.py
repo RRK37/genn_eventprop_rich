@@ -5,14 +5,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 from os.path import exists
+import sys
 
+rand1 = sys.argv[1]
+rand2 = sys.argv[2]
+ 
 # Training Setup
 p["EVALUATION"]             = "speaker"
-p["N_EPOCH"]                = 2
+p["N_EPOCH"]                = 300
 p["BALANCE_TRAIN_CLASSES"]  = True
 p["BALANCE_EVAL_CLASSES"]   = True
-p["TRAIN_DATA_SEED"]        = 321
-p["TEST_DATA_SEED"]         = 123
+p["TRAIN_DATA_SEED"]        = rand1
+p["TEST_DATA_SEED"]         = rand2
 p["TRIAL_MS"]               = 1000.0
 p["AUGMENTATION"]= {
     "NORMALISE_SPIKE_NUMBER": True,
@@ -53,11 +57,11 @@ p["LBD_LOWER"]= 2e-9
 
 
 # Recording parameters
-# p["OUT_DIR"]                = "z_bell_loss_0_-02_44_04"
-p["OUT_DIR"]                = "z_experimental_rec_2"
-p["REC_SPIKES"]             = ["hidden0"]
-p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
-p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
+p["OUT_DIR"]                = "z_gaussian_x5"
+# p["OUT_DIR"]                = "simple_euler"
+# p["REC_SPIKES"]             = ["input","hidden0","output"]
+# p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
+# p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
 
 #p["DEBUG"]= True
 
@@ -70,7 +74,6 @@ p["SPK_REC_STEPS"]          = int(p["TRIAL_MS"]/p["DT_MS"])
 #p["REC_SYNAPSES_EPOCH_TRIAL"] = [1,7]
 #p["W_OUTPUT_EPOCH_TRIAL"] = [1,7]
 #p["TAU_OUTPUT_EPOCH_TRIAL"] = [1,7]
-
 
 
 p["BUILD"] = True
