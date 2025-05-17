@@ -7,8 +7,8 @@ import json
 from os.path import exists
 import sys
 
-rand1 = sys.argv[1]
-rand2 = sys.argv[2]
+rand1 = int(sys.argv[1])
+rand2 = int(sys.argv[2])
  
 # Training Setup
 p["EVALUATION"]             = "speaker"
