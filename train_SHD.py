@@ -57,7 +57,7 @@ p["LBD_LOWER"]= 2e-9
 
 
 # Recording parameters
-p["OUT_DIR"]                = "z_gaussian_x5"
+p["OUT_DIR"]                = "z_exponential_x5"
 # p["OUT_DIR"]                = "simple_euler"
 # p["REC_SPIKES"]             = ["input","hidden0","output"]
 # p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
