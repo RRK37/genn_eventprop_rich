@@ -12,11 +12,11 @@ rand2 = int(sys.argv[2])
  
 # Training Setup
 p["EVALUATION"]             = "speaker"
-p["N_EPOCH"]                = 200
+p["N_EPOCH"]                = 300
 p["BALANCE_TRAIN_CLASSES"]  = True
 p["BALANCE_EVAL_CLASSES"]   = True
-p["TRAIN_DATA_SEED"]        = rand1
-p["TEST_DATA_SEED"]         = rand2
+p["TRAIN_DATA_SEED"]        = 123
+p["TEST_DATA_SEED"]         = 321
 p["TRIAL_MS"]               = 1000.0
 p["AUGMENTATION"]= {
     "NORMALISE_SPIKE_NUMBER": True,
@@ -25,6 +25,7 @@ p["AUGMENTATION"]= {
 }
 p["N_INPUT_DELAY"]          = 10
 p["INPUT_DELAY"]            = 30
+p["N_BATCH"]= 64
 
 
 # Learning parameters
@@ -57,7 +58,7 @@ p["LBD_LOWER"]= 2e-9
 
 
 # Recording parameters
-p["OUT_DIR"]                = "z_exponential_x5"
+p["OUT_DIR"]                = "experimental_7"
 # p["OUT_DIR"]                = "simple_euler"
 # p["REC_SPIKES"]             = ["input","hidden0","output"]
 # p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
