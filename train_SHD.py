@@ -40,7 +40,7 @@ p["ALPHA"]                  = 5*10^(-5)
 # Network parameters
 p["REG_TYPE"]               = "simple"
 p["TAU_MEM"]                = 40
-p["TAU_SYN"]                = 2
+p["TAU_SYN"]                = 5
 p["N_HID_LAYER"]            = 1
 p["NUM_HIDDEN"]             = 1024
 p["RECURRENT"]              = True
