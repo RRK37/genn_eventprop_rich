@@ -2241,6 +2241,11 @@ class SHD_model:
                     confusion[ph].append(conf[ph])
 
             if (p["CHECKPOINT_BEST"] == "validation" and correct_eval > correct_eval_best) or (p["CHECKPOINT_BEST"] == "training" and correct > correct_best):
+                
+                print("saved best")
+                print("saved best")
+                print("saved best")
+                
                 correct_eval_best = correct_eval
                 correct_best = correct
                 with open(os.path.join(p["OUT_DIR"], p["NAME"]+"_best.txt"),"w") as f:
