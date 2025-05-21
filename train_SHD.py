@@ -29,7 +29,7 @@ p["N_BATCH"]= 32
 
 
 # Learning parameters
-p["ETA"]                    = 0.002
+p["ETA"]                    = 0.001
 p["MIN_EPOCH_ETA_FIXED"]    = 1
 p["LOSS_TYPE"]              = "sum_weigh_exp"
 p["TAU_0"]                  = 1
@@ -39,11 +39,11 @@ p["ALPHA"]                  = 5*10^(-5)
 
 # Network parameters
 p["REG_TYPE"]               = "simple"
-p["TAU_MEM"]                = 20
-p["TAU_SYN"]                = 10
+p["TAU_MEM"]                = 40
+p["TAU_SYN"]                = 2
 p["N_HID_LAYER"]            = 1
 p["NUM_HIDDEN"]             = 1024
-p["RECURRENT"]              = False
+p["RECURRENT"]              = True
 p["INPUT_HIDDEN_MEAN"]      = 0.03
 p["INPUT_HIDDEN_STD"]       = 0.01
 p["HIDDEN_HIDDEN_MEAN"]     = 0
@@ -52,7 +52,7 @@ p["HIDDEN_OUTPUT_MEAN"]     = 0
 p["HIDDEN_OUTPUT_STD"]      = 0.03
 p["PDROP_INPUT"]            = 0
 p["NU_UPPER"]               = 14
-p["GLB_UPPER"]              = 1e-12
+p["GLB_UPPER"]              = 1e-9
 p["LBD_UPPER"]              = 2e-9
 p["LBD_LOWER"]              = 2e-9
 
