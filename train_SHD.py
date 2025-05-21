@@ -78,23 +78,23 @@ p["CHECKPOINT_BEST"]        = "validation"
 #p["TAU_OUTPUT_EPOCH_TRIAL"] = [1,7]
 
 
-p["BUILD"] = True
+# p["BUILD"] = True
 
 
-jname= os.path.join(p["OUT_DIR"], p["NAME"]+".json")
-jfile= open(jname,'w')
-json.dump(p,jfile)
-print(p)
+# jname= os.path.join(p["OUT_DIR"], p["NAME"]+".json")
+# jfile= open(jname,'w')
+# json.dump(p,jfile)
+# print(p)
 
-mn= SHD_model(p)
-spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train(p)
+# mn= SHD_model(p)
+# spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train(p)
 
-rname= os.path.join(p["OUT_DIR"], p["NAME"]+'.summary.txt')
-sumfile= open(rname,'w')
-sumfile.write("Training correct: {}, Valuation correct: {}".format(correct,correct_eval))
+# rname= os.path.join(p["OUT_DIR"], p["NAME"]+'.summary.txt')
+# sumfile= open(rname,'w')
+# sumfile.write("Training correct: {}, Valuation correct: {}".format(correct,correct_eval))
 
-print("correct: {}".format(correct))
-print("correct_eval: {}".format(correct_eval))
+# print("correct: {}".format(correct))
+# print("correct_eval: {}".format(correct_eval))
 
 
 p["BALANCE_TRAIN_CLASSES"] = False
