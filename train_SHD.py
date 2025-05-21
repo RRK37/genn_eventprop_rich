@@ -12,7 +12,7 @@ rand2 = int(sys.argv[2])
  
 # Training Setup
 p["EVALUATION"]             = "speaker"
-p["N_EPOCH"]                = 200
+p["N_EPOCH"]                = 3
 p["BALANCE_TRAIN_CLASSES"]  = True
 p["BALANCE_EVAL_CLASSES"]   = True
 p["TRAIN_DATA_SEED"]        = rand1
@@ -58,7 +58,8 @@ p["LBD_LOWER"]              = 2e-9
 
 
 # Recording parameters
-p["OUT_DIR"]                = "z_no_weight_x5"
+p["OUT_DIR"]                = "z_save_best_gaussian"
+p["CHECKPOINT_BEST"]        = "validation"
 # p["OUT_DIR"]                = "simple_euler"
 # p["REC_SPIKES"]             = ["input","hidden0","output"]
 # p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
@@ -94,3 +95,7 @@ sumfile.write("Training correct: {}, Valuation correct: {}".format(correct,corre
 
 print("correct: {}".format(correct))
 print("correct_eval: {}".format(correct_eval))
+
+p["LOAD_BEST"] = True
+mn2= SHD_model(p)
+spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.test(p)
