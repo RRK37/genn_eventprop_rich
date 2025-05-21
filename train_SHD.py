@@ -96,6 +96,8 @@ p["BUILD"] = True
 # print("correct: {}".format(correct))
 # print("correct_eval: {}".format(correct_eval))
 
+p["BALANCE_TRAIN_CLASSES"] = False
+P["BALANCE_EVAL_CLASSES"] = False
 p["LOAD_BEST"] = True
 p["BUILD"] = False
 mn2= SHD_model(p)
