@@ -69,7 +69,6 @@ p["CHECKPOINT_BEST"]        = "validation"
 
 #p["W_OUTPUT_EPOCH_TRIAL"]= [(0,25),(0,26),(0,27),(0,28),(0,29),(0,30),(0,31),
 #]
-
 # p["REC_NEURONS"] = [("input","in_neuron"), ("hidden0","hid_neuron"), ("output","out_neuron")]
 # p["REC_NEURONS_EPOCH_TRIAL"] = [1,1]
 #p["REC_SYNAPSES"] = [("in_to_hid","in_hi_synapse")]#, "hid_to_out"]
@@ -78,23 +77,23 @@ p["CHECKPOINT_BEST"]        = "validation"
 #p["TAU_OUTPUT_EPOCH_TRIAL"] = [1,7]
 
 
-# p["BUILD"] = True
+p["BUILD"] = True
 
 
-# jname= os.path.join(p["OUT_DIR"], p["NAME"]+".json")
-# jfile= open(jname,'w')
-# json.dump(p,jfile)
-# print(p)
+jname= os.path.join(p["OUT_DIR"], p["NAME"]+".json")
+jfile= open(jname,'w')
+json.dump(p,jfile)
+print(p)
 
-# mn= SHD_model(p)
-# spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train(p)
+mn= SHD_model(p)
+spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train(p)
 
-# rname= os.path.join(p["OUT_DIR"], p["NAME"]+'.summary.txt')
-# sumfile= open(rname,'w')
-# sumfile.write("Training correct: {}, Valuation correct: {}".format(correct,correct_eval))
+rname= os.path.join(p["OUT_DIR"], p["NAME"]+'.summary.txt')
+sumfile= open(rname,'w')
+sumfile.write("Training correct: {}, Valuation correct: {}".format(correct,correct_eval))
 
-# print("correct: {}".format(correct))
-# print("correct_eval: {}".format(correct_eval))
+print("correct: {}".format(correct))
+print("correct_eval: {}".format(correct_eval))
 
 
 p["BALANCE_TRAIN_CLASSES"] = False
