@@ -52,9 +52,9 @@ p["HIDDEN_OUTPUT_MEAN"]     = 0
 p["HIDDEN_OUTPUT_STD"]      = 0.03
 p["PDROP_INPUT"]            = 0
 p["NU_UPPER"]               = 14
-p["GLB_UPPER"] = 1e-12
-p["LBD_UPPER"]= 2e-9
-p["LBD_LOWER"]= 2e-9
+p["GLB_UPPER"]              = 1e-12
+p["LBD_UPPER"]              = 2e-9
+p["LBD_LOWER"]              = 2e-9
 
 
 # Recording parameters
