@@ -12,11 +12,11 @@ rand2 = int(sys.argv[2])
  
 # Training Setup
 p["EVALUATION"]             = "speaker"
-p["N_EPOCH"]                = 300
+p["N_EPOCH"]                = 200
 p["BALANCE_TRAIN_CLASSES"]  = True
 p["BALANCE_EVAL_CLASSES"]   = True
-p["TRAIN_DATA_SEED"]        = 123
-p["TEST_DATA_SEED"]         = 321
+p["TRAIN_DATA_SEED"]        = rand1
+p["TEST_DATA_SEED"]         = rand2
 p["TRIAL_MS"]               = 1000.0
 p["AUGMENTATION"]= {
     "NORMALISE_SPIKE_NUMBER": True,
@@ -29,9 +29,9 @@ p["N_BATCH"]= 32
 
 
 # Learning parameters
-p["ETA"]                    = 0.001
+p["ETA"]                    = 0.002
 p["MIN_EPOCH_ETA_FIXED"]    = 1
-p["LOSS_TYPE"]              = "sum_weigh_exp"
+p["LOSS_TYPE"]              = "sum"
 p["TAU_0"]                  = 1
 p["TAU_1"]                  = 100
 p["ALPHA"]                  = 5*10^(-5)
@@ -40,7 +40,7 @@ p["ALPHA"]                  = 5*10^(-5)
 # Network parameters
 p["REG_TYPE"]               = "simple"
 p["TAU_MEM"]                = 20
-p["TAU_SYN"]                = 5
+p["TAU_SYN"]                = 10
 p["N_HID_LAYER"]            = 1
 p["NUM_HIDDEN"]             = 1024
 p["RECURRENT"]              = False
@@ -52,13 +52,13 @@ p["HIDDEN_OUTPUT_MEAN"]     = 0
 p["HIDDEN_OUTPUT_STD"]      = 0.03
 p["PDROP_INPUT"]            = 0
 p["NU_UPPER"]               = 14
-p["GLB_UPPER"] = 1e-9
+p["GLB_UPPER"] = 1e-12
 p["LBD_UPPER"]= 2e-9
 p["LBD_LOWER"]= 2e-9
 
 
 # Recording parameters
-p["OUT_DIR"]                = "experimental_7"
+p["OUT_DIR"]                = "z_no_weight_x5"
 # p["OUT_DIR"]                = "simple_euler"
 # p["REC_SPIKES"]             = ["input","hidden0","output"]
 # p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]

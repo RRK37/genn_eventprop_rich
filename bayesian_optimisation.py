@@ -59,13 +59,7 @@ def find_best_loss(path):
 # Define the hyperparameter space (6 dimensions in this case)
 # Each Real space defines the lower and upper bounds for a hyperparameter.
 param_space = [
-    Real(16.0, 24.0, name='t_mem'),
-    Real(2.0, 8.0, name='t_syn'), 
-    Real(0.0001, 0.01, name='eta'),
-    Real(30, 50, name='f_shift'),
-    Real(5, 15, name='n_delay'), 
-    Real(25, 35, name='t_delay'),
-    Real(0.3, 0.7, name='glb_upper') 
+    Real(16.0, 24.0, name='t_mem')
 ]
 
 # Define your black-box function (e.g., training a neural network and returning validation loss)
@@ -89,27 +83,27 @@ def black_box_function(t_mem, t_syn, eta, f_shift, n_delay, t_delay, glb_upper):
     p["TRIAL_MS"]               = 1000.0
     p["AUGMENTATION"]= {
         "NORMALISE_SPIKE_NUMBER": True,
-        "random_shift": f_shift,
+        "random_shift": 40.0,
         "blend": [0.5,0.5]
     }
-    p["N_INPUT_DELAY"]          = n_delay
-    p["INPUT_DELAY"]            = t_delay
+    p["N_INPUT_DELAY"]          = 10
+    p["INPUT_DELAY"]            = 30
 
 
     # Learning parameters
-    p["ETA"]                    = eta
+    p["ETA"]                    = 0.001
     p["MIN_EPOCH_ETA_FIXED"]    = 300
     p["LOSS_TYPE"]              = "sum_weigh_exp"
     p["TAU_0"]                  = 1
     p["TAU_1"]                  = 100
     p["ALPHA"]                  = 5*10^(-5)
-    p["GLB_UPPER"] = glb_upper
+    p["GLB_UPPER"]              = 1e-9
 
 
     # Network parameters
     p["REG_TYPE"]               = "simple"
-    p["TAU_MEM"]                = t_mem
-    p["TAU_SYN"]                = t_syn
+    p["TAU_MEM"]                = 20
+    p["TAU_SYN"]                = 5
     p["N_HID_LAYER"]            = 1
     p["NUM_HIDDEN"]             = 1024
     p["RECURRENT"]              = True
