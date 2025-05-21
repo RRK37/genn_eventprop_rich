@@ -31,7 +31,7 @@ p["N_BATCH"]= 32
 # Learning parameters
 p["ETA"]                    = 0.002
 p["MIN_EPOCH_ETA_FIXED"]    = 1
-p["LOSS_TYPE"]              = "sum"
+p["LOSS_TYPE"]              = "sum_weigh_exp"
 p["TAU_0"]                  = 1
 p["TAU_1"]                  = 100
 p["ALPHA"]                  = 5*10^(-5)
