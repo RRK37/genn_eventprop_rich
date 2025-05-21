@@ -96,9 +96,13 @@ p["BUILD"] = True
 # print("correct: {}".format(correct))
 # print("correct_eval: {}".format(correct_eval))
 
-p["BALANCE_TRAIN_CLASSES"] = False
-p["BALANCE_EVAL_CLASSES"] = False
+
 p["LOAD_BEST"] = True
 p["BUILD"] = False
+p["AUGMENTATION"]= {
+    "NORMALISE_SPIKE_NUMBER": False,
+    "random_shift": 40.0,
+    "blend": [0.5,0.5]
+}
 mn2= SHD_model(p)
 spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn2.test(p)
