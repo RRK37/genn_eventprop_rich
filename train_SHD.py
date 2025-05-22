@@ -58,7 +58,7 @@ p["LBD_LOWER"]              = 2e-9
 
 
 # Recording parameters
-p["OUT_DIR"]                = "z_save_best_gaussian"
+p["OUT_DIR"]                = "z_save_best_gaussian_again"
 p["CHECKPOINT_BEST"]        = "validation"
 # p["OUT_DIR"]                = "simple_euler"
 # p["REC_SPIKES"]             = ["input","hidden0","output"]
