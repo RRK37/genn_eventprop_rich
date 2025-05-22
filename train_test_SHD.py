@@ -25,7 +25,7 @@ p["DATASET"]= "SHD"
 p["NAME"]= "tt1"
 p["DT_MS"]= 1
 p["DEBUG"]= False
-p["DEBUG_HIDDEN_N"]= True
+p["DEBUG_HIDDEN_N"]= False
 p["LOAD_LAST"]= False
 
 
