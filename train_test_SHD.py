@@ -84,11 +84,6 @@ p["RECURRENT"]= True
 p["REWIRE_SILENT"]= True
 p["AVG_SNSUM"]= True
 
-p["AUGMENTATION"]= {
-    "random_shift": 20.0,
-    "random_dilate": (0.9, 1.1),
-    "ID_jitter": 5.0
-}
 
 if p["DEBUG"]:
     p["REC_SPIKES"]= ["input", "hidden"]
