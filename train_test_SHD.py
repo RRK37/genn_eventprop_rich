@@ -95,9 +95,13 @@ with open(os.path.join(p["OUT_DIR"], p["NAME"]+'.json'), 'w') as file:
 
 p["N_TRAIN"]= 8156
 p["N_VALIDATE"]= 0
-for i in range(10):
-    mn= SHD_model(p)
-    spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train_test(p)
-    with open(os.path.join(p["OUT_DIR"], p["NAME"]+'_traintest.txt'),'a') as f:
-        f.write("{} {}\n".format(correct,correct_eval))
-    p["TRAIN_DATA_SEED"]+= 31
+
+
+
+
+# for i in range(10):
+mn= SHD_model(p)
+spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train_test(p)
+with open(os.path.join(p["OUT_DIR"], p["NAME"]+'_traintest.txt'),'a') as f:
+    f.write("{} {}\n".format(correct,correct_eval))
+p["TRAIN_DATA_SEED"]+= 31
