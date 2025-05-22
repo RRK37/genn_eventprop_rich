@@ -25,7 +25,7 @@ p["AUGMENTATION"]= {
 }
 p["N_INPUT_DELAY"]          = 10
 p["INPUT_DELAY"]            = 30
-p["N_BATCH"]= 32
+p["N_BATCH"]                = 32
 
 
 # Learning parameters
@@ -86,7 +86,7 @@ json.dump(p,jfile)
 print(p)
 
 mn= SHD_model(p)
-spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train_test(p)
+spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train(p)
 
 rname= os.path.join(p["OUT_DIR"], p["NAME"]+'.summary.txt')
 sumfile= open(rname,'w')
