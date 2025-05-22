@@ -12,7 +12,7 @@ rand2 = int(sys.argv[2])
  
 # Training Setup
 p["EVALUATION"]             = "speaker"
-p["N_EPOCH"]                = 3
+p["N_EPOCH"]                = 300
 p["BALANCE_TRAIN_CLASSES"]  = True
 p["BALANCE_EVAL_CLASSES"]   = True
 p["TRAIN_DATA_SEED"]        = rand1

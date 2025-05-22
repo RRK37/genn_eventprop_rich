@@ -46,7 +46,7 @@ p["SHUFFLE"]= True
 #p["N_TEST"]= 2264 - just for reference, simulator will derive from the data
 
 # Network structure
-p["NUM_HIDDEN"] = 256
+p["NUM_HIDDEN"] = 1024
 p["RECURRENT"] = False
 p["N_HID_LAYER"]= 1
 p["N_INPUT_DELAY"]= 0
