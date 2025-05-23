@@ -1626,7 +1626,7 @@ EVP_LIF_output_sum_weigh_exp = genn_model.create_custom_neuron_class(
     // forward pass
     // update the summed voltage
     
-    float noise_pwr = 1
+    // float noise_pwr = 1;
 
     // if (local_t<0.05) {
     //     $(V) += $(V) * local_t * 0.4 * noise_pwr;
