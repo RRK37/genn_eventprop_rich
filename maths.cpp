@@ -2,6 +2,7 @@
 /////////////////////////////////////////////// Backward Pass ///////////////////////////////////////////////////////////////////////
 
 const double local_t= ($(t)-$(rev_t))/$(trial_t);
+// Decay coeficients.
 scalar alpha= exp(-DT/$(tau_m)); scalar beta= exp(-DT/$(tau_syn));
 scalar gamma= $(tau_m)/($(tau_m)-$(tau_syn)); scalar A= 0.0;
 
