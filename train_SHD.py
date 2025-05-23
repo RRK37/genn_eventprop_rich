@@ -79,6 +79,7 @@ p["OUT_DIR"]                = "z_save_best_gaussian_again"
 
 p["BUILD"] = False
 p["CHECKPOINT_NAME"]        = "test"
+p["LOAD_BEST"] = True
 
 p["BALANCE_TRAIN_CLASSES"] = False
 p["BALANCE_EVAL_CLASSES"] = False
