@@ -59,7 +59,7 @@ p["LBD_LOWER"]              = 2e-9
 
 # Recording parameters
 p["OUT_DIR"]                = "z_save_best_gaussian_again"
-p["CHECKPOINT_BEST"]        = "validation"
+# p["CHECKPOINT_BEST"]        = "validation"
 # p["OUT_DIR"]                = "simple_euler"
 # p["REC_SPIKES"]             = ["input","hidden0","output"]
 # p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
@@ -77,7 +77,8 @@ p["CHECKPOINT_BEST"]        = "validation"
 #p["TAU_OUTPUT_EPOCH_TRIAL"] = [1,7]
 
 
-p["BUILD"] = True
+p["BUILD"] = False
+p["CHECKPOINT_NAME"]        = "test"
 
 
 jname= os.path.join(p["OUT_DIR"], p["NAME"]+".json")
@@ -86,7 +87,7 @@ json.dump(p,jfile)
 print(p)
 
 mn= SHD_model(p)
-spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train(p)
+spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.test(p)
 
 rname= os.path.join(p["OUT_DIR"], p["NAME"]+'.summary.txt')
 sumfile= open(rname,'w')
