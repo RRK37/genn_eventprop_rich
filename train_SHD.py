@@ -12,7 +12,7 @@ rand2 = int(sys.argv[2])
  
 # Training Setup
 p["EVALUATION"]             = "speaker"
-p["N_EPOCH"]                = 300
+p["N_EPOCH"]                = 20
 # p["BALANCE_TRAIN_CLASSES"]  = True
 # p["BALANCE_EVAL_CLASSES"]   = True
 p["TRAIN_DATA_SEED"]        = rand1
@@ -25,7 +25,7 @@ p["AUGMENTATION"]= {
 }
 p["N_INPUT_DELAY"]          = 10
 p["INPUT_DELAY"]            = 30
-p["N_BATCH"]                = 16
+p["N_BATCH"]                = 8
 
 
 # Learning parameters
@@ -58,7 +58,7 @@ p["LBD_LOWER"]              = 2e-9
 
 
 # Recording parameters
-p["OUT_DIR"]                = "z_save_best_gaussian_again_2"
+p["OUT_DIR"]                = "z_save_best_gaussian_again_3"
 p["CHECKPOINT_BEST"]        = "validation"
 p["COLLECT_CONFUSION"]      = True
 # p["OUT_DIR"]                = "simple_euler"

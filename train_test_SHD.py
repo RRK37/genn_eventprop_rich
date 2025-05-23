@@ -63,7 +63,7 @@ p["ADAM_BETA2"]= 0.999
 
 
 
-p["N_BATCH"]= 16
+p["N_BATCH"]= 8
 p["SUPER_BATCH"]= 1
 p["N_TRAIN"]= 8156 # that is all of them
 p["N_VALIDATE"]= 0 # no validation
