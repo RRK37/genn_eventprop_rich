@@ -97,8 +97,8 @@ print("correct: {}".format(correct))
 print("correct_eval: {}".format(correct_eval))
 
 
-# p["BALANCE_TRAIN_CLASSES"] = False
-# p["BALANCE_EVAL_CLASSES"] = False
+p["BALANCE_TRAIN_CLASSES"] = False
+p["BALANCE_EVAL_CLASSES"] = False
 # p["LOAD_BEST"] = True
 # p["BUILD"] = False
 # p["AUGMENTATION"]= {
