@@ -7,9 +7,9 @@ scalar alpha= exp(-DT/$(tau_m)); scalar beta= exp(-DT/$(tau_syn));
 scalar gamma= $(tau_m)/($(tau_m)-$(tau_syn)); scalar A= 0.0;
 
 // Initialise modified Gaussian curve parameters. 
-float a = 0.4;
-float b = 4.4;
-float c = 0.2;
+float a = 0.3;
+float b = 2.3;
+float c = 0.37;
 
 // Don't calculate the intermediary variable A if this is the first trial.
 if ($(trial) > 0) {
