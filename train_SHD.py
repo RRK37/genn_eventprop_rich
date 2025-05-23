@@ -9,7 +9,7 @@ import sys
 
 rand1 = int(sys.argv[1])
 rand2 = int(sys.argv[2])
-p["CUDA_VISIBLE_DEVICES"]= False
+
  
 # Training Setup
 p["EVALUATION"]             = "speaker"
@@ -26,7 +26,7 @@ p["AUGMENTATION"]= {
 }
 p["N_INPUT_DELAY"]          = 10
 p["INPUT_DELAY"]            = 30
-p["N_BATCH"]                = 1
+p["N_BATCH"]                = 64
 
 
 # Learning parameters

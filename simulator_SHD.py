@@ -38,7 +38,7 @@ p["MODEL_SEED"]= None
 # Experiment parameters
 p["TRIAL_MS"]= 1400.0
 p["N_MAX_SPIKE"]= 1500    # make buffers for maximally 1500 spikes (750 in a 1400 ms trial) - this should normally be ok; excess spikes are dropped 
-p["N_BATCH"]= 1
+p["N_BATCH"]= 32
 p["N_TRAIN"]= 7644 # together with N_VALIDATE= 512 this is all 8156 samples
 p["N_VALIDATE"]= 512
 p["N_EPOCH"]= 100
@@ -128,7 +128,7 @@ p["TAU_ACCUMULATOR"]= 20.0   # for input-weighted sum losses
 # possible evaluation types: "random", "speaker"
 p["EVALUATION"]= "random"
 p["SPEAKER_LEFT"]= [0]
-p["CUDA_VISIBLE_DEVICES"]= False
+p["CUDA_VISIBLE_DEVICES"]= True
 p["AVG_SNSUM"]= False
 p["REDUCED_CLASSES"]= None
 # "first_spike" loss function variables
@@ -360,9 +360,7 @@ class SHD_model:
         return loss
 
     def loss_func_sum(self, Y, N_batch):
-        softmax_vals = np.atleast_2d(self.output.vars["SoftmaxVal"].view)
-        SoftmaxVal = softmax_vals[:N_batch, :self.N_class]  # Now it's safe to index
-        # SoftmaxVal= softmax_vals.view[:N_batch,:self.N_class]
+        SoftmaxVal= self.output.vars["SoftmaxVal"].view[:N_batch,:self.N_class]
         SoftmaxVal_correct= np.array([ SoftmaxVal[i,y] for i, y in enumerate(Y) ])
         if (np.sum(SoftmaxVal_correct == 0) > 0):
             print("exp_V flushed to 0 exception!")
@@ -664,7 +662,7 @@ class SHD_model:
             kwargs["deviceSelectMethod"] = DeviceSelect_MANUAL
             if self.GPU is not None:
                 kwargs["manualDeviceID"] = self.GPU
-        self.model = genn_model.GeNNModel("float", p["NAME"], generateLineInfo=True, time_precision="double", **kwargs, backend="SingleThreadedCPU")
+        self.model = genn_model.GeNNModel("float", p["NAME"], generateLineInfo=True, time_precision="double", **kwargs)
         self.model.dT = p["DT_MS"]
         self.model.timing_enabled = p["TIMING"]
         self.model.batch_size = p["N_BATCH"]
@@ -1786,10 +1784,11 @@ class SHD_model:
         red_lr_last= 0      # epoch when LR was last reduced
         correct_eval_best = 0.0
         correct_best = 0.0
-        start_time= time()
+        the_time = time()
+        start_time = time()
         for epoch in range(number_epochs):
-            #print(f"start epoch ... {time()-the_time} s for last epoch mainloop")
-            #the_time= time()
+            print(f"start epoch ... {time()-the_time} s for last epoch mainloop")
+            the_time= time()
             # if we are doing augmentation, the entire spike time array needs to be set up anew.
             lX= copy.deepcopy(X_train)
             lY= copy.deepcopy(Y_train)
@@ -2065,9 +2064,7 @@ class SHD_model:
                     pred= np.argmax(self.output.vars["exp_V"].view[:N_batch,:self.N_class], axis=-1)
                 if p["LOSS_TYPE"][:3] == "sum":
                     self.output.pull_var_from_device("SoftmaxVal")
-                    softmax_vals = np.atleast_2d(self.output.vars["SoftmaxVal"].view)
-                    softmax_vals = softmax_vals[:N_batch, :self.N_class]  # Now it's safe to index
-                    pred= np.argmax(softmax_vals, axis=-1)
+                    pred= np.argmax(self.output.vars["SoftmaxVal"].view[:N_batch,:self.N_class], axis=-1)
                     
                 if p["LOSS_TYPE"] == "avg_xentropy":
                     pred= np.argmax(self.output.vars["sum_V"].view[:N_batch,:self.N_class], axis=-1)
@@ -2244,6 +2241,10 @@ class SHD_model:
                     confusion[ph].append(conf[ph])
 
             if (p["CHECKPOINT_BEST"] == "validation" and correct_eval > correct_eval_best) or (p["CHECKPOINT_BEST"] == "training" and correct > correct_best):
+                
+                print("saved best")
+                print("correct eval is: ", correct_eval)
+                print("epoch is:", epoch)
                 correct_eval_best = correct_eval
                 correct_best = correct
                 with open(os.path.join(p["OUT_DIR"], p["NAME"]+"_best.txt"),"w") as f:
@@ -2258,8 +2259,16 @@ class SHD_model:
                     f.close()
                 self.write_checkpoint("best",p)    
 
-            if (p["CHECKPOINT"]):
-                self.write_checkpoint("last",p)
+            # if (p["CHECKPOINT"]):
+            # if epoch%2 == 1:
+            #     if epoch < 10:
+            #         rich_label = "00"+str(epoch)
+            #     elif epoch < 100:
+            #         rich_label = "0"+str(epoch)
+            #     else:
+            #         rich_label = str(epoch)
+
+            #     self.write_checkpoint(rich_label, p)
                 
         for pop in p["REC_SPIKES"]:
             spike_t[pop]= np.hstack(spike_t[pop])
@@ -2361,13 +2370,7 @@ class SHD_model:
                 X_train, Y_train, Z_train, X_eval, Y_eval, Z_eval= self.split_SHD_random(self.X_train_orig, self.Y_train_orig, self.Z_train_orig, p)
             if p["EVALUATION"] == "speaker":
                 speakers= list(set(self.Z_train_orig))
-                index = p["SPEAKER_LEFT"][0]
-                print("Indexing into speakers with:", index)
-                print("speakers type:", type(speakers))
-                print("speakers content:", speakers)
-                if isinstance(p["SPEAKER_LEFT"], int):  
-                    p["SPEAKER_LEFT"] = [p["SPEAKER_LEFT"]]
-                X_train, Y_train, Z_train, X_eval, Y_eval, Z_eval= self.split_SHD_speaker(self.X_train_orig, self.Y_train_orig, self.Z_train_orig, speakers[0], p)
+                X_train, Y_train, Z_train, X_eval, Y_eval, Z_eval= self.split_SHD_speaker(self.X_train_orig, self.Y_train_orig, self.Z_train_orig, speakers[p["SPEAKER_LEFT"][0]], p)
             if p["EVALUATION"] == "validation_set":
                 X_train= self.X_train_orig
                 Y_train= self.Y_train_orig
