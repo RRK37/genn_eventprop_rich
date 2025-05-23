@@ -19,7 +19,7 @@ p["TRAIN_DATA_SEED"]        = rand1
 p["TEST_DATA_SEED"]         = rand2
 p["TRIAL_MS"]               = 1000.0
 p["AUGMENTATION"]= {
-    "NORMALISE_SPIKE_NUMBER": True,
+    "NORMALISE_SPIKE_NUMBER": False,
     "random_shift": 40.0,
     "blend": [0.5,0.5]
 }
