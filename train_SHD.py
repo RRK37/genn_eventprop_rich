@@ -19,13 +19,13 @@ p["TRAIN_DATA_SEED"]        = rand1
 p["TEST_DATA_SEED"]         = rand2
 p["TRIAL_MS"]               = 1000.0
 p["AUGMENTATION"]= {
-    "NORMALISE_SPIKE_NUMBER": False,
+    "NORMALISE_SPIKE_NUMBER": True,
     "random_shift": 40.0,
     "blend": [0.5,0.5]
 }
 p["N_INPUT_DELAY"]          = 10
 p["INPUT_DELAY"]            = 30
-p["N_BATCH"]                = 32
+p["N_BATCH"]                = 16
 
 
 # Learning parameters
@@ -58,8 +58,9 @@ p["LBD_LOWER"]              = 2e-9
 
 
 # Recording parameters
-p["OUT_DIR"]                = "z_save_best_gaussian_again"
-# p["CHECKPOINT_BEST"]        = "validation"
+p["OUT_DIR"]                = "z_save_best_gaussian_again_2"
+p["CHECKPOINT_BEST"]        = "validation"
+p["COLLECT_CONFUSION"]      = True
 # p["OUT_DIR"]                = "simple_euler"
 # p["REC_SPIKES"]             = ["input","hidden0","output"]
 # p["REC_SPIKES_EPOCH_TRIAL"] = [[1,1]]
@@ -77,12 +78,12 @@ p["OUT_DIR"]                = "z_save_best_gaussian_again"
 #p["TAU_OUTPUT_EPOCH_TRIAL"] = [1,7]
 
 
-p["BUILD"] = False
-p["CHECKPOINT_NAME"]        = "test"
-p["LOAD_BEST"] = True
+# p["BUILD"] = False
+# p["CHECKPOINT_NAME"]        = "test"
+# p["LOAD_BEST"] = True
 
-p["BALANCE_TRAIN_CLASSES"] = False
-p["BALANCE_EVAL_CLASSES"] = False
+# p["BALANCE_TRAIN_CLASSES"] = False
+# p["BALANCE_EVAL_CLASSES"] = False
 
 jname= os.path.join(p["OUT_DIR"], p["NAME"]+".json")
 jfile= open(jname,'w')
