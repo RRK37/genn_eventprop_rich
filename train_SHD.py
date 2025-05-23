@@ -25,7 +25,7 @@ p["AUGMENTATION"]= {
 }
 p["N_INPUT_DELAY"]          = 10
 p["INPUT_DELAY"]            = 30
-p["N_BATCH"]                = 2
+p["N_BATCH"]                = 1
 
 
 # Learning parameters
