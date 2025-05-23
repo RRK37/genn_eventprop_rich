@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 
+
+
+
+
 p["TRIAL_MS"]= 1400
 p["DATASET"]= "SHD"
 p["TRAIN_DATA_SEED"]= 366
@@ -18,8 +22,8 @@ p["DT_MS"]= 1
 p["PDROP_INPUT"]= 0.0
 p["ADAM_BETA1"]= 0.9
 p["ADAM_BETA2"]= 0.999   
-p["DEBUG"]= True
-p["DEBUG_HIDDEN_N"]= True
+p["DEBUG"]= False
+p["DEBUG_HIDDEN_N"]= False
 p["N_EPOCH"]= 1
 p["N_BATCH"]= 256
 p["N_TRAIN"]= 7900 #20*p["N_BATCH"] #7756 
@@ -43,10 +47,42 @@ p["GLB_UPPER"]= 0.0
 p["ETA_DECAY"]= 1.0      
 p["ETA_FIDDELING"]= False
 p["WRITE_TO_DISK"]= False
-p["LOAD_LAST"]= True
+# p["LOAD_LAST"]= True
+p["LOAD_BEST"]= True
 p["TIMING"]= False
-p["LOSS_TYPE"]= "sum"
+p["LOSS_TYPE"]= "sum_weigh_exp"
 p["SPK_REC_STEPS"]= int(p["TRIAL_MS"]/p["DT_MS"])
+
+
+# Learning parameters
+p["ETA"]                    = 0.001
+p["MIN_EPOCH_ETA_FIXED"]    = 300
+p["LOSS_TYPE"]              = "sum_weigh_exp"
+p["TAU_0"]                  = 1
+p["TAU_1"]                  = 100
+p["ALPHA"]                  = 5*10^(-5)
+
+
+# Network parameters
+p["REG_TYPE"]               = "simple"
+p["TAU_MEM"]                = 20
+p["TAU_SYN"]                = 5
+p["N_HID_LAYER"]            = 1
+p["NUM_HIDDEN"]             = 512
+p["RECURRENT"]              = True
+p["INPUT_HIDDEN_MEAN"]      = 0.03
+p["INPUT_HIDDEN_STD"]       = 0.01
+p["HIDDEN_HIDDEN_MEAN"]     = 0
+p["HIDDEN_HIDDEN_STD"]      = 0.02 
+p["HIDDEN_OUTPUT_MEAN"]     = 0 
+p["HIDDEN_OUTPUT_STD"]      = 0.03
+p["PDROP_INPUT"]            = 0
+p["NU_UPPER"]               = 14
+p["GLB_UPPER"]              = 1e-9
+p["LBD_UPPER"]              = 2e-9
+p["LBD_LOWER"]              = 2e-9
+p["CHECKPOINT_NAME"]        = "test"
+p["OUT_DIR"]                = "z_save_best_gaussian_again"
 
 if p["DEBUG"]:
     p["REC_SPIKES"]= ["input", "hidden"]
