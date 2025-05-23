@@ -13,8 +13,8 @@ rand2 = int(sys.argv[2])
 # Training Setup
 p["EVALUATION"]             = "speaker"
 p["N_EPOCH"]                = 300
-p["BALANCE_TRAIN_CLASSES"]  = True
-p["BALANCE_EVAL_CLASSES"]   = True
+# p["BALANCE_TRAIN_CLASSES"]  = True
+# p["BALANCE_EVAL_CLASSES"]   = True
 p["TRAIN_DATA_SEED"]        = rand1
 p["TEST_DATA_SEED"]         = rand2
 p["TRIAL_MS"]               = 1000.0
@@ -78,7 +78,7 @@ p["COLLECT_CONFUSION"]      = True
 #p["TAU_OUTPUT_EPOCH_TRIAL"] = [1,7]
 
 
-# p["BUILD"] = False
+p["BUILD"] = True
 # p["CHECKPOINT_NAME"]        = "test"
 # p["LOAD_BEST"] = True
 
@@ -91,7 +91,7 @@ json.dump(p,jfile)
 print(p)
 
 mn= SHD_model(p)
-spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.test(p)
+spike_t, spike_ID, rec_vars_n, rec_vars_s,correct,correct_eval= mn.train(p)
 
 rname= os.path.join(p["OUT_DIR"], p["NAME"]+'.summary.txt')
 sumfile= open(rname,'w')
