@@ -9,6 +9,7 @@ import sys
 
 rand1 = int(sys.argv[1])
 rand2 = int(sys.argv[2])
+p["CUDA_VISIBLE_DEVICES"]= False
  
 # Training Setup
 p["EVALUATION"]             = "speaker"

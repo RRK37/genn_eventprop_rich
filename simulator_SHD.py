@@ -664,7 +664,7 @@ class SHD_model:
             kwargs["deviceSelectMethod"] = DeviceSelect_MANUAL
             if self.GPU is not None:
                 kwargs["manualDeviceID"] = self.GPU
-        self.model = genn_model.GeNNModel("float", p["NAME"], generateLineInfo=True, time_precision="double", **kwargs)
+        self.model = genn_model.GeNNModel("float", p["NAME"], generateLineInfo=True, time_precision="double", **kwargs, backend="SingleThreadedCPU")
         self.model.dT = p["DT_MS"]
         self.model.timing_enabled = p["TIMING"]
         self.model.batch_size = p["N_BATCH"]
