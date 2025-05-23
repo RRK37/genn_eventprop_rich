@@ -30,7 +30,7 @@ p["N_BATCH"]                = 32
 
 # Learning parameters
 p["ETA"]                    = 0.001
-p["MIN_EPOCH_ETA_FIXED"]    = 1
+p["MIN_EPOCH_ETA_FIXED"]    = 300
 p["LOSS_TYPE"]              = "sum_weigh_exp"
 p["TAU_0"]                  = 1
 p["TAU_1"]                  = 100
@@ -42,7 +42,7 @@ p["REG_TYPE"]               = "simple"
 p["TAU_MEM"]                = 20
 p["TAU_SYN"]                = 5
 p["N_HID_LAYER"]            = 1
-p["NUM_HIDDEN"]             = 1024
+p["NUM_HIDDEN"]             = 512
 p["RECURRENT"]              = True
 p["INPUT_HIDDEN_MEAN"]      = 0.03
 p["INPUT_HIDDEN_STD"]       = 0.01
