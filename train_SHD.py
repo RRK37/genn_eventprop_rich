@@ -80,6 +80,8 @@ p["OUT_DIR"]                = "z_save_best_gaussian_again"
 p["BUILD"] = False
 p["CHECKPOINT_NAME"]        = "test"
 
+p["BALANCE_TRAIN_CLASSES"] = False
+p["BALANCE_EVAL_CLASSES"] = False
 
 jname= os.path.join(p["OUT_DIR"], p["NAME"]+".json")
 jfile= open(jname,'w')
@@ -97,8 +99,6 @@ print("correct: {}".format(correct))
 print("correct_eval: {}".format(correct_eval))
 
 
-p["BALANCE_TRAIN_CLASSES"] = False
-p["BALANCE_EVAL_CLASSES"] = False
 # p["LOAD_BEST"] = True
 # p["BUILD"] = False
 # p["AUGMENTATION"]= {
