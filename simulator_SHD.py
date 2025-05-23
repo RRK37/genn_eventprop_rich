@@ -2361,12 +2361,12 @@ class SHD_model:
                 X_train, Y_train, Z_train, X_eval, Y_eval, Z_eval= self.split_SHD_random(self.X_train_orig, self.Y_train_orig, self.Z_train_orig, p)
             if p["EVALUATION"] == "speaker":
                 speakers= list(set(self.Z_train_orig))
-                # index = p["SPEAKER_LEFT"][0]
-                # print("Indexing into speakers with:", index)
-                # print("speakers type:", type(speakers))
-                # print("speakers content:", speakers)
-                # if isinstance(p["SPEAKER_LEFT"], int):  
-                #     p["SPEAKER_LEFT"] = [p["SPEAKER_LEFT"]]
+                index = p["SPEAKER_LEFT"][0]
+                print("Indexing into speakers with:", index)
+                print("speakers type:", type(speakers))
+                print("speakers content:", speakers)
+                if isinstance(p["SPEAKER_LEFT"], int):  
+                    p["SPEAKER_LEFT"] = [p["SPEAKER_LEFT"]]
                 X_train, Y_train, Z_train, X_eval, Y_eval, Z_eval= self.split_SHD_speaker(self.X_train_orig, self.Y_train_orig, self.Z_train_orig, speakers[p["SPEAKER_LEFT"]], p)
             if p["EVALUATION"] == "validation_set":
                 X_train= self.X_train_orig
